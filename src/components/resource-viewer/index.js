@@ -7,6 +7,9 @@ import {
 import { Context } from '../../provider';
 import Wrapper from './style';
 
+// const fs = window.require('fs');
+const ipc = window.require('electron').ipcRenderer
+
 export default () => {
   const { resourceId, allResources } = useContext(Context);
   const [resource, setResource] = useState(null);
@@ -17,15 +20,23 @@ export default () => {
 
     if (!resourceFound) return;
 
+    ipc.send('inspect-dir', resourceFound.carpeta);
+    
+
+    // const content = fs.readFileSync('/tmp/lala', 'utf8');
+    // console.log(content)
     setResource(resourceFound);
   }, [resourceId]);
 
-  if (!resource) return null;
-
   return (
     <Wrapper.Main>
-      <h1>{resource.titulo}</h1>
-      <h2>{resource.descripcion}</h2>
+    {
+      resource &&
+      <>
+        <h1>{resource.titulo}</h1>
+        <h2>{resource.descripcion}</h2>
+      </>
+    }
     </Wrapper.Main>
   );
 }

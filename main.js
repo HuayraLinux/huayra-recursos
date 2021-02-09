@@ -1,14 +1,29 @@
 const { app, BrowserWindow } = require('electron');
-const isDev = require('electron-is-dev');   
 const path = require('path');
+
+const isDev = require('electron-is-dev');   
+const ipc = require('electron').ipcMain;
+
+const { fileSystem } = require('./utils');
+
+const config = {
+  baseDir: '/tmp'
+
+};
  
-let mainWindow;
+ipc.on('inspect-dir', (e, dir) => {
+  const fullDir = `${config.baseDir}/${dir}`;
+  console.log(fileSystem().readDir(fullDir));
+});
  
-function createWindow() {
-  mainWindow = new BrowserWindow({
+const createWindow = () => {
+  const mainWindow = new BrowserWindow({
     width: 1366,
     height: 768,
-    show: false
+    show: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
   });
 
   const startURL = isDev ? 'http://localhost:3002' : `file://${path.join(__dirname, '../build/index.html')}`;
