@@ -4,27 +4,40 @@
     "categoria": "CIENCIAS_NATURALES",
     "titulo": "Biología",
     "descripcion": "Celula Eucariota",
-    "carpeta": "recursos/biologia/cel_eucariota"
+    "carpeta": "recursos/biologia/cel_eucariota",
+    "tipo": "IMAGEN"
   },
   {
     "id": 2,
     "categoria": "CIENCIAS_NATURALES",
     "titulo": "Biología",
     "descripcion": "Celula Procariota",
-    "carpeta": "recursos/biologia/cel_procariota"
+    "carpeta": "recursos/biologia/cel_procariota",
+    "tipo": "IMAGEN"
   },
   {
     "id": 3,
     "categoria": "MATEMATICA",
     "titulo": "Algebra",
     "descripcion": "",
-    "carpeta": "recursos/matematica/despejar-x"
+    "carpeta": "recursos/matematica/despejar-x",
+    "tipo": "VIDEO"
   },
   {
     "id": 4,
     "categoria": "CIENCIAS_SOCIALES",
     "titulo": "Geografía Argentina",
     "descripcion": "Mapa Político Argentino",
-    "carpeta": "recursos/cs-sociales/mapas/politico"
+    "carpeta": "recursos/cs-sociales/mapas/politico",
+    "tipo": "VIDEO"
+  },
+  {
+    "id": 5,
+    "categoria": "CIENCIAS_SOCIALES",
+    "titulo": "Modelo 3D Globo",
+    "descripcion": "Modelo 3D Globo animado",
+    "carpeta": "recursos/cs-sociales/geografia/globo",
+    "tipo": "VIDEO"
   }
+
 ]

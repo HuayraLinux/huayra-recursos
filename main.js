@@ -3,6 +3,7 @@ const path = require('path');
 
 const isDev = require('electron-is-dev');   
 const ipc = require('electron').ipcMain;
+const { protocol } = require('electron');
 
 const { fileSystem } = require('./utils');
 
@@ -10,6 +11,8 @@ const config = {
   baseDir: '/tmp'
 
 };
+
+
  
 ipc.on('inspect-dir', (e, dir) => {
   const fullDir = `${config.baseDir}/${dir}`;
@@ -17,12 +20,12 @@ ipc.on('inspect-dir', (e, dir) => {
 });
  
 const createWindow = () => {
-  const mainWindow = new BrowserWindow({
+  let mainWindow = new BrowserWindow({
     width: 1366,
     height: 768,
     show: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
     }
   });
 
@@ -34,9 +37,27 @@ const createWindow = () => {
   mainWindow.setMaximizable(false);
   mainWindow.webContents.openDevTools();
 
-  mainWindow.once('ready-to-show', () => mainWindow.show());
+  mainWindow.once('ready-to-show', () => {
+    
+    mainWindow.show()
+  });
   mainWindow.on('closed', () => {
       mainWindow = null;
   });
 }
-app.on('ready', createWindow);
+app.on('ready', () => {
+  const protocolName = 'proto-propio';
+  protocol.registerFileProtocol(protocolName, (request, callback) => {
+    const url = request.url.replace(`${protocolName}://`, '')
+    console.log(url);
+    try {
+      return callback(decodeURIComponent(url))
+    }
+    catch (error) {
+      // Handle the error as needed
+      console.error(error)
+    }
+  });
+
+  createWindow();
+});
