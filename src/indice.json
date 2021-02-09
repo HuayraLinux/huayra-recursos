@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "categoria": "CIENCIAS_NATURALES",
+    "titulo": "Biología",
+    "descripcion": "Celula Eucariota",
+    "carpeta": "recursos/biologia/cel_eucariota"
+  },
+  {
+    "id": 2,
+    "categoria": "CIENCIAS_NATURALES",
+    "titulo": "Biología",
+    "descripcion": "Celula Procariota",
+    "carpeta": "recursos/biologia/cel_procariota"
+  },
+  {
+    "id": 3,
+    "categoria": "MATEMATICA",
+    "titulo": "Algebra",
+    "descripcion": "",
+    "carpeta": "recursos/matematica/despejar-x"
+  },
+  {
+    "id": 4,
+    "categoria": "CIENCIAS_SOCIALES",
+    "titulo": "Geografía Argentina",
+    "descripcion": "Mapa Político Argentino",
+    "carpeta": "recursos/cs-sociales/mapas/politico"
+  }
+]

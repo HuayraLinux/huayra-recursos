@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from 'global-style';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Provider from './provider';
+import { MainLayout } from 'layouts';
+import {
+  MainTitle,
+  CategorySelector,
+  ResourceViewer,
+  ResourceExplorer,
+} from 'components';
+
+const App = () => (
+  <>
+    <GlobalStyle />
+    <MainTitle>Huayra Recursos Educ.Ar</MainTitle>
+    <MainLayout>
+      <Provider>
+        <CategorySelector />
+        <ResourceViewer />
+        <ResourceExplorer />
+      </Provider>
+    </MainLayout>
+  </>
+);
 
 export default App;
