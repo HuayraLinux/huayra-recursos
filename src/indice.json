@@ -1,43 +1,50 @@
 [
   {
     "id": 1,
-    "categoria": "CIENCIAS_NATURALES",
-    "titulo": "Biología",
-    "descripcion": "Celula Eucariota",
-    "carpeta": "recursos/biologia/cel_eucariota",
-    "tipo": "IMAGEN"
+    "ciclo": "basico",
+    "categoria": "Ciencias Naturales",
+    "titulo": "Célula Eucariota - Mitocondria",
+    "descripcion": "Entendamos el rol de la mitocondria",
+    "nombre_archivo": "SECUNDARIA_CBasico_Ciencias/celula.jpg"
   },
   {
     "id": 2,
-    "categoria": "CIENCIAS_NATURALES",
-    "titulo": "Biología",
-    "descripcion": "Celula Procariota",
-    "carpeta": "recursos/biologia/cel_procariota",
-    "tipo": "IMAGEN"
+    "ciclo": "orientado",
+    "categoria": "Ciencias Naturales",
+    "titulo": "Célula Procariota",
+    "descripcion": "Conozcamos las partes de la célula eucariota",
+    "nombre_archivo": "SECUNDARIA_COrientado_Ciencias/procariota.mp4"
   },
   {
     "id": 3,
-    "categoria": "MATEMATICA",
+    "ciclo": "orientado",
+    "categoria": "Matemática",
     "titulo": "Algebra",
-    "descripcion": "",
-    "carpeta": "recursos/matematica/despejar-x",
-    "tipo": "VIDEO"
+    "descripcion": "Despejando X",
+    "nombre_archivo": "SECUNDARIA_COrientado_Matematicas/algebra.mp4"
   },
   {
     "id": 4,
-    "categoria": "CIENCIAS_SOCIALES",
-    "titulo": "Geografía Argentina",
-    "descripcion": "Mapa Político Argentino",
-    "carpeta": "recursos/cs-sociales/mapas/politico",
-    "tipo": "VIDEO"
+    "ciclo": "basico",
+    "categoria": "Lengua",
+    "titulo": "Sujeto y Predicado",
+    "descripcion": "Encontrando las partes de la oración",
+    "nombre_archivo": "SECUNDARIA_CBasico_Lengua/sujeto-y-predicado.jpg"
   },
   {
     "id": 5,
-    "categoria": "CIENCIAS_SOCIALES",
-    "titulo": "Modelo 3D Globo",
-    "descripcion": "Modelo 3D Globo animado",
-    "carpeta": "recursos/cs-sociales/geografia/globo",
-    "tipo": "VIDEO"
+    "ciclo": "orientado",
+    "categoria": "Matemática",
+    "titulo": "Trigonometría",
+    "descripcion": "",
+    "nombre_archivo": "SECUNDARIA_COrientado_Matematicas/radianes.html"
+  },
+  {
+    "id": 6,
+    "ciclo": "basico",
+    "categoria": "Ciencias Naturales",
+    "titulo": "Conniferas",
+    "descripcion": "",
+    "nombre_archivo": "SECUNDARIA_CBasico_Ciencias/bosques-conniferas.jpg"
   }
-
 ]

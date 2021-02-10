@@ -8,28 +8,28 @@ import { Context } from '../../provider';
 import Wrapper from './style';
 
 export default () => {
-  const { allResources, setResourceId } = useContext(Context);
-  const [categories, setCategories] = useState([]);
+  const { resources, setResourceId } = useContext(Context);
+  const [resourcesToExplore, setResourcesToExplore] = useState([]);
 
   useEffect(() => {
-    if (!allResources.length) return;
+    if (!resources.length) return;
 
-    const categoryNames = allResources.map(c => ({ id: c.id, name: c.categoria }));
-    setCategories(categoryNames);
-  }, [allResources]);
-
+    setResourcesToExplore(resources);
+  }, [resources]);
 
   return (
     <Wrapper.Main>
       {
-        categories.map(c => (
+        resourcesToExplore.length ?
+        resourcesToExplore.map(c => (
           <Wrapper.Item
             onClick={() => setResourceId(c.id)}
             key={c.id}
           >
-            { c.name }
+            { c.titulo }
           </Wrapper.Item>
-        ))
+        )):
+        null
       }
     </Wrapper.Main>
   );

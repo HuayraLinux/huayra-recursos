@@ -8,17 +8,9 @@ const { protocol } = require('electron');
 const { fileSystem } = require('./utils');
 
 const config = {
-  baseDir: '/tmp'
-
+  baseDir: '/tmp/recursos'
 };
 
-
- 
-ipc.on('inspect-dir', (e, dir) => {
-  const fullDir = `${config.baseDir}/${dir}`;
-  console.log(fileSystem().readDir(fullDir));
-});
- 
 const createWindow = () => {
   let mainWindow = new BrowserWindow({
     width: 1366,
@@ -37,14 +29,27 @@ const createWindow = () => {
   mainWindow.setMaximizable(false);
   mainWindow.webContents.openDevTools();
 
+  ipc.on('inspect-file', (e, file) => {
+    try {
+      const filePath = `${config.baseDir}/${file}`;
+      fileSystem().exists(filePath);
+
+      const mimeType = fileSystem().getMime(file)
+      mainWindow.webContents.send('inspect-file-result', { filePath, mimeType });
+    } catch (e) {
+      mainWindow.webContents.send('inspect-file-result', e);
+    }
+  });
+
   mainWindow.once('ready-to-show', () => {
-    
     mainWindow.show()
   });
+
   mainWindow.on('closed', () => {
       mainWindow = null;
   });
 }
+
 app.on('ready', () => {
   const protocolName = 'proto-propio';
   protocol.registerFileProtocol(protocolName, (request, callback) => {

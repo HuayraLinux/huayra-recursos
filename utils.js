@@ -1,10 +1,13 @@
 const fs = require('fs');
+const mime = require('mime-types');
 
 const fileSystem = () => {
-  const readDir = path => fs.readdirSync(path);
+  const exists = file => fs.accessSync(file)
+  const getMime = file => mime.lookup(file);
 
   return ({
-    readDir
+    exists,
+    getMime
   });
 };
 
