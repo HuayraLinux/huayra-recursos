@@ -3,6 +3,8 @@ import {
   useEffect,
 } from 'react';
 
+import * as Viewers from './components';
+
 const appendCustomProtocol = file => `proto-propio://${file}`;
 
 const Video = ({ file }) => (
@@ -14,7 +16,6 @@ const Video = ({ file }) => (
 const Img = ({ file }) => (
   <img src={file} />
 );
-
 
 export default ({ resourceType }) => {
   const [component, setComponent] = useState(null);
@@ -31,6 +32,10 @@ export default ({ resourceType }) => {
 
       case 'image/jpeg':
         setComponent(<Img file={appendCustomProtocol(filePath)} />)
+        break;
+
+      case 'application/pdf':
+        setComponent(<Viewers.PDF file={appendCustomProtocol(filePath)} />)
         break;
 
       default:
