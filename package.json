@@ -1,6 +1,6 @@
 {
   "name": "huayra-recursos-educar",
-  "main": "main.js",
+  "main": "electron/main.js",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -41,13 +41,12 @@
     ]
   },
   "devDependencies": {
-    "electron": "^11.2.3",
-    "electron-is-dev": "^1.2.0"
+    "electron": "^11.2.3"
   },
   "build": {
-  "files": [
-    "**/*",
-    "build"
-  ]
-}
+    "files": [
+      "**/*",
+      "build"
+    ]
+  }
 }

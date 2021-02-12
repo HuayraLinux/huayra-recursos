@@ -1,15 +1,11 @@
-const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
-const isDev = require('electron-is-dev');   
-const ipc = require('electron').ipcMain;
-const { protocol } = require('electron');
-
-const { fileSystem } = require('./utils');
+const { app, BrowserWindow, protocol, ipcMain } = require('electron');
 
 const config = {
   baseDir: process.env.RESOURCES_FOLDER
 };
+const reactDevServer = process.env.REACT_DEV_SERVER;
 
 const createWindow = () => {
   let mainWindow = new BrowserWindow({
@@ -21,9 +17,7 @@ const createWindow = () => {
     },
   });
 
-  const startURL = 'http://localhost:3000';
-  // const startURL = isDev ? 'http://localhost:3002' : `file://${path.join(__dirname, '../build/index.html')}`;
-  // const startURL = `file://${path.join(__dirname, './build/index.html')}`;
+  const startURL = reactDevServer || `file://${path.join(__dirname, '../build/index.html')}`;
 
   mainWindow.loadURL(startURL);
   // mainWindow.setFullScreen(true);
@@ -31,17 +25,15 @@ const createWindow = () => {
   mainWindow.setMaximizable(false);
   mainWindow.webContents.openDevTools();
 
-  ipc.on('build-filename', (e, file) => {
+  ipcMain.on('build-filename', (e, file) => {
     const filePath = `${config.baseDir}/${file}`;
     mainWindow.webContents.send('build-filename-result', filePath);
   });
 
-  mainWindow.once('ready-to-show', () => {
-    mainWindow.show()
-  });
+  mainWindow.once('ready-to-show', () => mainWindow.show());
 
   mainWindow.on('closed', () => {
-      mainWindow = null;
+    mainWindow = null;
   });
 }
 
@@ -49,7 +41,6 @@ app.on('ready', () => {
   const protocolName = 'proto-propio';
   protocol.registerFileProtocol(protocolName, (request, callback) => {
     const url = request.url.replace(`${protocolName}://`, '')
-    console.log(url);
     try {
       return callback(decodeURIComponent(url))
     }
