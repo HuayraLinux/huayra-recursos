@@ -8,7 +8,7 @@ const { protocol } = require('electron');
 const { fileSystem } = require('./utils');
 
 const config = {
-  baseDir: '/tmp/recursos'
+  baseDir: process.env.RESOURCES_FOLDER
 };
 
 const createWindow = () => {
@@ -18,10 +18,12 @@ const createWindow = () => {
     show: false,
     webPreferences: {
       nodeIntegration: true,
-    }
+    },
   });
 
-  const startURL = isDev ? 'http://localhost:3002' : `file://${path.join(__dirname, '../build/index.html')}`;
+  const startURL = 'http://localhost:3000';
+  // const startURL = isDev ? 'http://localhost:3002' : `file://${path.join(__dirname, '../build/index.html')}`;
+  // const startURL = `file://${path.join(__dirname, './build/index.html')}`;
 
   mainWindow.loadURL(startURL);
   // mainWindow.setFullScreen(true);
@@ -29,16 +31,9 @@ const createWindow = () => {
   mainWindow.setMaximizable(false);
   mainWindow.webContents.openDevTools();
 
-  ipc.on('inspect-file', (e, file) => {
-    try {
-      const filePath = `${config.baseDir}/${file}`;
-      fileSystem().exists(filePath);
-
-      const mimeType = fileSystem().getMime(file)
-      mainWindow.webContents.send('inspect-file-result', { filePath, mimeType });
-    } catch (e) {
-      mainWindow.webContents.send('inspect-file-result', e);
-    }
+  ipc.on('build-filename', (e, file) => {
+    const filePath = `${config.baseDir}/${file}`;
+    mainWindow.webContents.send('build-filename-result', filePath);
   });
 
   mainWindow.once('ready-to-show', () => {

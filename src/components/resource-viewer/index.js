@@ -2,49 +2,49 @@ import {
   useContext,
   useState,
   useEffect,
+  useMemo,
 } from 'react';
 
 import { Context } from '../../provider';
 import { ResourceRender } from 'components';
 import Wrapper from './style';
+import mime from 'mime-types';
 
 const ipc = window.require('electron').ipcRenderer
 
 export default () => {
   const { resourceId, allResources } = useContext(Context);
 
-  const [resource, setResource] = useState(null);
+  const [resourceFile, setResourceFile] = useState(null);
+  const [resourceTitle, setResourceTitle] = useState(null);
+  const [resourceDescription, setResourceDescription] = useState(null);
   const [resourceType, setResourceType] = useState(null);
+
+  const [allowRender, setAllowRender] = useState(false);
 
   useEffect(() => {
     if (!resourceId) return;
+
     const resourceFound = allResources.find(r => r.id === resourceId);
 
-    if (!resourceFound) return;
+    setResourceTitle(resourceFound.titulo);
+    setResourceDescription(resourceFound.descripcion);
+    setResourceType(mime.lookup(resourceFound.nombre_archivo));
 
-    setResource(resourceFound);
-    ipc.send('inspect-file', resourceFound.nombre_archivo);
+    ipc.send('build-filename', resourceFound.nombre_archivo);
   }, [resourceId]);
 
   useEffect(() => {
-    ipc.on('inspect-file-result', (e, result) => {
-      setResourceType(null);
-      if (result instanceof Error) return;
-
-      setResourceType(result);
+    ipc.on('build-filename-result', (e, result) => {
+      setResourceFile(result);
     });
   }, []);
 
-  return (
+  return useMemo(() => (
     <Wrapper.Main>
-    {
-      resourceType &&
-      <>
-        <h1>{resource.titulo}</h1>
-        <h2>{resource.descripcion}</h2>
-        <ResourceRender resourceType={resourceType} />
-      </>
-    }
+      <h1>{ resourceTitle }</h1>
+      <h2>{ resourceDescription }</h2>
+      <ResourceRender file={resourceFile} mimeType={resourceType} />
     </Wrapper.Main>
-  );
-}
+  ), [resourceFile]);
+};

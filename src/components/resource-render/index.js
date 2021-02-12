@@ -17,32 +17,26 @@ const Img = ({ file }) => (
   <img src={file} />
 );
 
-export default ({ resourceType }) => {
-  const [component, setComponent] = useState(null);
+export default ({ file, mimeType }) => {
+  let component;
 
-  useEffect(() => {
-    if (!resourceType) return;
+  switch (mimeType) {
+    case 'video/mp4':
+      component = <Video key={file} file={appendCustomProtocol(file)} />;
+      break;
 
-    const { filePath, mimeType } = resourceType;
+    case 'image/jpeg':
+      component = <Img file={appendCustomProtocol(file)} />;
+      break;
 
-    switch (mimeType) {
-      case 'video/mp4':
-        setComponent(<Video file={appendCustomProtocol(filePath)} />)
-        break;
+    case 'application/pdf':
+      component = <Viewers.PDF file={appendCustomProtocol(file)} />;
+      break;
 
-      case 'image/jpeg':
-        setComponent(<Img file={appendCustomProtocol(filePath)} />)
-        break;
-
-      case 'application/pdf':
-        setComponent(<Viewers.PDF file={appendCustomProtocol(filePath)} />)
-        break;
-
-      default:
-        console.log(`${filePath} (${mimeType}) no soportado`);
-        setComponent(null);
-    }
-  }, [resourceType]);
+    default:
+      console.log(`${file} (${mimeType}) no soportado`);
+      component = null;
+  }
 
   return (
     <>
