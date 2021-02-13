@@ -7,12 +7,6 @@ import * as Viewers from './components';
 
 const appendCustomProtocol = file => `proto-propio://${file}`;
 
-const Video = ({ file }) => (
-  <video autoPlay controls className="w-full h-full" style={{ maxHeight: '450px' }}>
-    <source src={file}/>
-  </video>
-);
-
 const Img = ({ file }) => (
   <img src={file} />
 );
@@ -22,7 +16,7 @@ export default ({ file, mimeType }) => {
 
   switch (mimeType) {
     case 'video/mp4':
-      component = <Video key={file} file={appendCustomProtocol(file)} />;
+      component = <Viewers.Video key={file} file={appendCustomProtocol(file)} />;
       break;
 
     case 'image/jpeg':
