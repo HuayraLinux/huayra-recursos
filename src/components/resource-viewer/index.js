@@ -47,8 +47,8 @@ export default () => {
         <SplashScreen /> :
         <div className="h-full p-4 flex flex-col justify-between">
           <div>
-            <h1>{ resourceTitle }</h1>
-            <h2>{ resourceDescription }</h2>
+            <h1 className="text-2xl">{ resourceTitle }</h1>
+            <h2 className="text-lg">{ resourceDescription }</h2>
           </div>
           <ResourceRender file={resourceFile} mimeType={resourceType} />
         </div>
