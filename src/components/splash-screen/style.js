@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Main = styled.div.attrs({
-  className: ''
+  className: 'h-full pt-24 flex flex-col items-center'
 })``;
 
 export default ({
