@@ -8,8 +8,8 @@ import * as Viewers from './components';
 const appendCustomProtocol = file => `proto-propio://${file}`;
 
 const Video = ({ file }) => (
-  <video autoPlay controls>
-    <source src={file} />
+  <video autoPlay controls className="w-full h-full" style={{ maxHeight: '450px' }}>
+    <source src={file}/>
   </video>
 );
 
@@ -39,8 +39,8 @@ export default ({ file, mimeType }) => {
   }
 
   return (
-    <>
+    <div className="">
       { component }
-    </>
+    </div>
   );
 };

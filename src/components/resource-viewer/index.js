@@ -45,9 +45,11 @@ export default () => {
       {
         showSplash ?
         <SplashScreen /> :
-        <div className="p-4">
+        <div className="h-full p-4 flex flex-col justify-between">
+          <div>
             <h1>{ resourceTitle }</h1>
             <h2>{ resourceDescription }</h2>
+          </div>
           <ResourceRender file={resourceFile} mimeType={resourceType} />
         </div>
       }
