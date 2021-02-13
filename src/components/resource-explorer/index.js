@@ -8,7 +8,7 @@ import { Context } from '../../provider';
 import Wrapper from './style';
 
 export default () => {
-  const { resources, setResourceId } = useContext(Context);
+  const { resources, resourceId, setResourceId } = useContext(Context);
   const [resourcesToExplore, setResourcesToExplore] = useState([]);
 
   useEffect(() => {
@@ -23,6 +23,7 @@ export default () => {
           <Wrapper.Item
             onClick={() => setResourceId(c.id)}
             key={c.id}
+            selected={c.id === resourceId}
           >
             { c.titulo }
           </Wrapper.Item>

@@ -8,9 +8,9 @@ const Main = styled.ul.attrs({
   }
 `;
 
-const Item = styled.li.attrs({
-  className: 'p-4 cursor-pointer'
-})`
+const Item = styled.li.attrs((props) => ({
+  className: `p-4 cursor-pointer ${props.selected && 'font-bold truncate'}`
+}))`
 `;
 
 export default ({
