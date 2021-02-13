@@ -6,13 +6,14 @@ import {
 } from 'react';
 
 import { Context } from '../../provider';
-import { ResourceRender } from 'components';
+import { ResourceRender, SplashScreen } from 'components';
 import Wrapper from './style';
 import mime from 'mime-types';
 
 const ipc = window.require('electron').ipcRenderer
 
 export default () => {
+  const [showSplash, setShowSplash] = useState(true);
   const { resourceId, allResources } = useContext(Context);
 
   const [resourceFile, setResourceFile] = useState(null);
@@ -20,10 +21,9 @@ export default () => {
   const [resourceDescription, setResourceDescription] = useState(null);
   const [resourceType, setResourceType] = useState(null);
 
-  const [allowRender, setAllowRender] = useState(false);
-
   useEffect(() => {
     if (!resourceId) return;
+    setShowSplash(false);
 
     const resourceFound = allResources.find(r => r.id === resourceId);
 
@@ -42,9 +42,15 @@ export default () => {
 
   return useMemo(() => (
     <Wrapper.Main>
-      <h1>{ resourceTitle }</h1>
-      <h2>{ resourceDescription }</h2>
-      <ResourceRender file={resourceFile} mimeType={resourceType} />
+      {
+        showSplash ?
+        <SplashScreen /> :
+        <div className="p-4">
+            <h1>{ resourceTitle }</h1>
+            <h2>{ resourceDescription }</h2>
+          <ResourceRender file={resourceFile} mimeType={resourceType} />
+        </div>
+      }
     </Wrapper.Main>
   ), [resourceFile]);
 };

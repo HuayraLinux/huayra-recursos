@@ -4,7 +4,7 @@ import {
   useEffect,
 } from 'react';
 
-import { Context } from '../../provider';
+import { Context } from 'provider';
 import getData from '../../lib';
 import Wrapper from './style';
 
@@ -21,7 +21,13 @@ const OptGroup = ({ id, label, children }) => (
 );
 
 export default () => {
-  const { allResources, setResources } = useContext(Context);
+  const {
+    allResources,
+    setResources,
+    isSearching,
+    resources,
+  } = useContext(Context);
+
   const [formattedData, setFormattedData] = useState([]);
 
   const onCategoryClicked = ({ target }) => {
@@ -49,8 +55,12 @@ export default () => {
   }, [allResources]);
 
   return (
-    <Wrapper.Main>
-      <Wrapper.Select onChange={onCategoryClicked}>
+    <Wrapper.Main disabled={isSearching}>
+      <Wrapper.Select onChange={onCategoryClicked} disabled={isSearching}>
+        {
+          (isSearching || !resources.length) &&
+          <option selected={true} disabled="disabled">Elegí una materia</option>
+        }
         {
           formattedData.map((e, i) => (
             <OptGroup key={i} id={e.cycle} label={e.cycle}>

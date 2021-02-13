@@ -12,8 +12,6 @@ export default () => {
   const [resourcesToExplore, setResourcesToExplore] = useState([]);
 
   useEffect(() => {
-    if (!resources.length) return;
-
     setResourcesToExplore(resources);
   }, [resources]);
 

@@ -1,10 +1,14 @@
 const path = require('path');
 
-const { app, BrowserWindow, protocol, ipcMain } = require('electron');
+const {
+  app,
+  BrowserWindow,
+  protocol,
+  ipcMain,
+} = require('electron');
 
-const config = {
-  baseDir: process.env.RESOURCES_FOLDER
-};
+const config = require('./config');
+
 const reactDevServer = process.env.REACT_DEV_SERVER;
 
 const createWindow = () => {

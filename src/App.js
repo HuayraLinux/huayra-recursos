@@ -3,7 +3,7 @@ import GlobalStyle from 'global-style';
 import Provider from './provider';
 import { MainLayout } from 'layouts';
 import {
-  MainTitle,
+  SearchBar,
   CategorySelector,
   ResourceViewer,
   ResourceExplorer,
@@ -12,9 +12,9 @@ import {
 const App = () => (
   <>
     <GlobalStyle />
-    <MainTitle>Huayra Recursos Educ.Ar</MainTitle>
     <MainLayout>
       <Provider>
+        <SearchBar />
         <CategorySelector />
         <ResourceViewer />
         <ResourceExplorer />
