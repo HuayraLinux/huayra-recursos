@@ -4,6 +4,7 @@ import {
   useEffect,
   useMemo,
 } from 'react';
+
 import Emoji from 'react-emoji-render';
 
 import { Context } from '../../provider';
@@ -49,7 +50,7 @@ export default () => {
         <Wrapper.ResourcePlaceholder>
           <div className="flex justify-between items-baseline">
             <h1 className="text-2xl truncate">{ resourceTitle }</h1>
-            <div className="flex ">
+            <div className="flex">
               <Emoji text=":file_folder:" style={{ fontSize: '32px' }}/>
               <Emoji text=":memo:" style={{ fontSize: '32px', marginTop: '-0.2rem' }}/>
             </div>

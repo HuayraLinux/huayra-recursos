@@ -5,3 +5,4 @@ export { default as ResourceExplorer } from './resource-explorer';
 export { default as ResourceRender } from './resource-render';
 export { default as SplashScreen } from './splash-screen';
 export { default as SearchBar } from './search-bar';
+export { default as EmojiButton } from './emoji-button';
