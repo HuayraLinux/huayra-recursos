@@ -1,9 +1,17 @@
 import styled from 'styled-components';
 
 const Main = styled.div.attrs({
-  className: 'row-span-2 overflow-y-scroll overflow-x-hidden rounded shadow-md'
+  className: 'p-4 row-span-2 overflow-y-scroll overflow-x-hidden rounded shadow-md'
 })``;
 
+const ResourcePlaceholder = styled.div.attrs({
+  className: 'grid h-full'
+})`
+  grid-template-columns: 100%;
+  grid-template-rows: 0.1fr 0.1fr auto;
+`;
+
 export default ({
-  Main
+  Main,
+  ResourcePlaceholder,
 });

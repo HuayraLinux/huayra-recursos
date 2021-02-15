@@ -1,8 +1,3 @@
-import {
-  useState,
-  useEffect,
-} from 'react';
-
 import * as Viewers from './components';
 
 const appendCustomProtocol = file => `proto-propio://${file}`;
@@ -33,8 +28,6 @@ export default ({ file, mimeType }) => {
   }
 
   return (
-    <div className="">
-      { component }
-    </div>
+    component
   );
 };

@@ -4,6 +4,7 @@ import {
   useEffect,
   useMemo,
 } from 'react';
+import Emoji from 'react-emoji-render';
 
 import { Context } from '../../provider';
 import { ResourceRender, SplashScreen } from 'components';
@@ -13,9 +14,9 @@ import mime from 'mime-types';
 const ipc = window.require('electron').ipcRenderer
 
 export default () => {
-  const [showSplash, setShowSplash] = useState(true);
   const { resourceId, allResources } = useContext(Context);
 
+  const [showSplash, setShowSplash] = useState(true);
   const [resourceFile, setResourceFile] = useState(null);
   const [resourceTitle, setResourceTitle] = useState(null);
   const [resourceDescription, setResourceDescription] = useState(null);
@@ -45,13 +46,17 @@ export default () => {
       {
         showSplash ?
         <SplashScreen /> :
-        <div className="h-full p-4 flex flex-col justify-between">
-          <div>
-            <h1 className="text-2xl">{ resourceTitle }</h1>
-            <h2 className="text-lg">{ resourceDescription }</h2>
+        <Wrapper.ResourcePlaceholder>
+          <div className="flex justify-between items-baseline">
+            <h1 className="text-2xl truncate">{ resourceTitle }</h1>
+            <div className="flex ">
+              <Emoji text=":file_folder:" style={{ fontSize: '32px' }}/>
+              <Emoji text=":memo:" style={{ fontSize: '32px', marginTop: '-0.2rem' }}/>
+            </div>
           </div>
+          <h2 className="text-lg">{ resourceDescription }</h2>
           <ResourceRender file={resourceFile} mimeType={resourceType} />
-        </div>
+        </Wrapper.ResourcePlaceholder>
       }
     </Wrapper.Main>
   ), [resourceFile]);
