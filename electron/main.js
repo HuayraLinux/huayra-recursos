@@ -23,7 +23,7 @@ const createWindow = () => {
     minHeight: config.height,
     webPreferences: {
       nodeIntegration: true,
-      devTools: true,
+      devTools: reactDevServer && true,
     },
   });
 
@@ -37,7 +37,6 @@ const createWindow = () => {
     mainWindow.webContents.openDevTools();
   } else {
     Menu.setApplicationMenu(Menu.buildFromTemplate([]));
-    mainWindow.webPreferences.devTools = false;
   }
 
   ipcMain.on('build-filename', (e, file) => {

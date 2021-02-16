@@ -5,7 +5,7 @@ const Main = styled.div.attrs((props) => ({
 }))``;
 
 const Select = styled.select.attrs((props) => ({
-  className: `h-full w-full p-4 outline-none ${props.disabled && 'cursor-not-allowed bg-gray-300'}`
+  className: `h-full w-full p-4 outline-none bg-white ${props.disabled && 'cursor-not-allowed bg-gray-300'}`
 }))``;
 
 const OptGroup = styled.optgroup.attrs({

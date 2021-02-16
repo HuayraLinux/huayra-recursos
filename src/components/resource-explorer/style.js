@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Main = styled.ul.attrs({
-  className: 'bg-white overflow-scroll rounded border-2'
+  className: 'bg-white overflow-y-scroll rounded border-2'
 })`
   & > li:nth-of-type(odd) {
     background: #ececec;
