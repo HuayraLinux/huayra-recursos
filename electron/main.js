@@ -65,8 +65,10 @@ const createWindow = () => {
 }
 
 app.on('ready', () => {
-  globalShortcut.register('CommandOrControl+R', () => null);
-  globalShortcut.register('F5', () => null);
+  if (!reactDevServer) {
+    globalShortcut.register('CommandOrControl+R', () => null);
+    globalShortcut.register('F5', () => null);
+  }
 
   const protocolName = 'proto-propio';
   protocol.registerFileProtocol(protocolName, (request, callback) => {

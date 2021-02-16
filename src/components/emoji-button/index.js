@@ -1,15 +1,18 @@
-import Emoji from 'react-emoji-render';
-
 import Wrapper from './style';
+import * as Emojis from 'assets/emojis';
 
-export default ({ emojiText, title, onClick, style, disabled = false, size = '32px' }) => (
-  <Wrapper.Main
-    onClick={disabled ? null : onClick}
-    clickeable={onClick ? true : false }
-    style={style}
-    disabled={disabled}
-    title={title}
-  >
-    <Emoji text={`:${emojiText}:`} style={{ fontSize: size }} />
-  </Wrapper.Main>
-);
+export default ({ name, title, onClick, style, disabled = false, size = '48px' }) => {
+  const EmojiSVGSrc = Emojis[name];
+
+  return (
+    <Wrapper.Main
+      onClick={disabled ? null : onClick}
+      clickeable={onClick ? true : false }
+      style={style}
+      disabled={disabled}
+      title={title}
+    >
+      <img height={size} width={size} className={`${disabled && 'opacity-25'}`} src={EmojiSVGSrc} />
+    </Wrapper.Main>
+  );
+};

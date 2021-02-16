@@ -66,14 +66,13 @@ export default () => {
               {
                 !resourceNotFound &&
                 <>
-                  <EmojiButton emojiText="file_folder" 
+                  <EmojiButton name="FileFolder" 
                     title="Abrir en carpeta"
                     onClick={() => ipc.send('open-in-folder', resourceFile)}
                   />
-                  <EmojiButton emojiText="memo" 
+                  <EmojiButton name="Memo" 
                     title="Abrir recurso"
                     onClick={() => ipc.send('open-file', resourceFile)}
-                    style={{ marginTop: '-0.2rem' }}
                   />
                 </>
               }
@@ -83,7 +82,7 @@ export default () => {
           {
             resourceNotFound ?
             <div className="flex flex-col items-center justify-center rounded">
-              <EmojiButton emojiText="warning" 
+              <EmojiButton name="Warning" 
                 title="Archivo no encontrado"
                 size="64px"
               />

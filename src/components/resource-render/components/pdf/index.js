@@ -26,14 +26,14 @@ export default ({ file }) => {
   return (
     <Wrapper.Main key={file}>
       <div className="justify-self-end mr-12">
-        <EmojiButton emojiText="arrow_left" 
+        <EmojiButton name="ArrowLeft"
           onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage - 1 === 0}
           title="Página previa"
         />
       </div>
       <div className="justify-self-start ml-12">
-        <EmojiButton emojiText="arrow_right"
+        <EmojiButton name="ArrowRight"
           onClick={() => setCurrentPage(currentPage + 1)}
           disabled={currentPage + 1 > numPages}
           title="Página siguiente"
