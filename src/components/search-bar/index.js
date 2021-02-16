@@ -33,7 +33,11 @@ export default () => {
     
   return (
     <Wrapper.Main>
-      <input onChange={onSearchInput} className="w-full h-full outline-none" type="text" />
+      <input
+        onChange={onSearchInput}
+        placeholder="Escribí lo que quieras buscar..."
+        className="w-full h-full outline-none" type="text"
+      />
     </Wrapper.Main>
   );
 };

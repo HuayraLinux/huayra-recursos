@@ -31,7 +31,6 @@ const getHumanFileType = (mimeType) => {
 };
 
 const analyze = (resources) => {
-  console.log('analyze');
   const report = resources.reduce((acc, r) => {
     const mimeType = mime.lookup(r.nombre_archivo)
     const humanType = getHumanFileType(mimeType);
