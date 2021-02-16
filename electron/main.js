@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 
 const {
@@ -5,6 +6,7 @@ const {
   BrowserWindow,
   protocol,
   ipcMain,
+  shell,
 } = require('electron');
 
 const config = require('./config');
@@ -31,8 +33,20 @@ const createWindow = () => {
 
   ipcMain.on('build-filename', (e, file) => {
     const filePath = `${config.baseDir}/${file}`;
-    mainWindow.webContents.send('build-filename-result', filePath);
+    const response = { filePath };
+
+    try {
+      fs.accessSync(filePath);
+    } catch (e) {
+      response.error = true;
+    } finally {
+      mainWindow.webContents.send('build-filename-result', response);
+    }
   });
+
+  ipcMain.on('open-in-folder', (e, file) => shell.showItemInFolder(file));
+  ipcMain.on('open-file', (e, file) => shell.openPath(file));
+  ipcMain.on('open-resource-folder', (e, file) => shell.openPath(config.baseDir));
 
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
@@ -47,9 +61,7 @@ app.on('ready', () => {
     const url = request.url.replace(`${protocolName}://`, '')
     try {
       return callback(decodeURIComponent(url))
-    }
-    catch (error) {
-      // Handle the error as needed
+    } catch (error) {
       console.error(error)
     }
   });
