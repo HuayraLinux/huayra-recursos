@@ -3,7 +3,6 @@ import {
   useMemo
 } from 'react';
 
-import Emoji from 'react-emoji-render';
 import mime from 'mime-types';
 
 import { Context } from 'provider';
@@ -14,12 +13,10 @@ const fileTypes = [
   {
     type: 'Videos',
     mimes: ['video/mp4'],
-    emoji: <Emoji text=":globe_with_meridians:" />,
   },
   {
     type: 'Documentos',
     mimes: ['application/pdf'],
-    emoji: <Emoji text=":globe_with_meridians:" />,
   },
 ];
 
