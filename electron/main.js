@@ -7,6 +7,8 @@ const {
   protocol,
   ipcMain,
   shell,
+  Menu,
+  globalShortcut,
 } = require('electron');
 
 const config = require('./config');
@@ -15,23 +17,27 @@ const reactDevServer = process.env.REACT_DEV_SERVER;
 
 const createWindow = () => {
   let mainWindow = new BrowserWindow({
-    width: 1366,
-    height: 768,
-    show: false,
+    width: config.width,
+    height: config.height,
+    minWidth: config.width,
+    minHeight: config.height,
     webPreferences: {
       nodeIntegration: true,
+      devTools: true,
     },
   });
 
   const startURL = reactDevServer || `file://${path.join(__dirname, '../build/index.html')}`;
 
   mainWindow.loadURL(startURL);
-  // mainWindow.setFullScreen(true);
-  mainWindow.setResizable(false);
-  mainWindow.setMaximizable(false);
-
+  mainWindow.setPosition(0, 0);
+  mainWindow.setMenuBarVisibility(false);
+  
   if (reactDevServer) {
     mainWindow.webContents.openDevTools();
+  } else {
+    Menu.setApplicationMenu(Menu.buildFromTemplate([]));
+    mainWindow.webPreferences.devTools = false;
   }
 
   ipcMain.on('build-filename', (e, file) => {
@@ -59,6 +65,9 @@ const createWindow = () => {
 }
 
 app.on('ready', () => {
+  globalShortcut.register('CommandOrControl+R', () => null);
+  globalShortcut.register('F5', () => null);
+
   const protocolName = 'proto-propio';
   protocol.registerFileProtocol(protocolName, (request, callback) => {
     const url = request.url.replace(`${protocolName}://`, '')

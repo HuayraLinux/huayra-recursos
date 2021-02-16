@@ -7,6 +7,7 @@ export default createGlobalStyle`
 
   body {
     overflow: hidden;
+    user-select: none;
   }
 `;
 
