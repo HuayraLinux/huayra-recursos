@@ -4,7 +4,7 @@ import {
   useEffect
 } from 'react';
 
-import { Context } from '../../provider';
+import { Context } from 'provider';
 import Wrapper from './style';
 
 export default () => {
