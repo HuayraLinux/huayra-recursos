@@ -5,7 +5,7 @@ import { pdfjs, Document, Page } from 'react-pdf';
 import { EmojiButton } from 'components';
 import Wrapper from './style';
 
-pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js'
+pdfjs.GlobalWorkerOptions.workerSrc = './pdf.worker.min.js'
 
 export default ({ file }) => {
   const [numPages, setNumPages] = useState(null);

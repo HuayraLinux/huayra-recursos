@@ -29,7 +29,10 @@ const createWindow = () => {
   // mainWindow.setFullScreen(true);
   mainWindow.setResizable(false);
   mainWindow.setMaximizable(false);
-  mainWindow.webContents.openDevTools();
+
+  if (reactDevServer) {
+    mainWindow.webContents.openDevTools();
+  }
 
   ipcMain.on('build-filename', (e, file) => {
     const filePath = `${config.baseDir}/${file}`;

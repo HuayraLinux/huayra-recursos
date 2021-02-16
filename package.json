@@ -10,7 +10,6 @@
     "mime-types": "^2.1.28",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-emoji-render": "^1.2.4",
     "react-pdf": "^5.1.0",
     "react-scripts": "4.0.2",
     "styled-components": "^5.2.1",
@@ -19,7 +18,9 @@
   "scripts": {
     "start:electron": "electron .",
     "start:react": "react-scripts start",
-    "build": "react-scripts build",
+    "remove-build": "rm -rf build",
+    "copy-pdfjs-worker": "cp -af ./node_modules/pdfjs-dist/build/pdf.worker.js.map build/",
+    "build": "npm run remove-build && react-scripts build && npm run copy-pdfjs-worker" ,
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -49,5 +50,6 @@
       "**/*",
       "build"
     ]
-  }
+  },
+  "homepage": "./"
 }
