@@ -53,19 +53,17 @@ export default () => {
 
   return (
     <Wrapper.Main>
-      <div className="">
-        <h1 className="text-4xl text-center">Recursos Educativos Abiertos</h1>
-        <h2 className="mt-12 text-2xl">Tenés a tu disposición: </h2>
-        <ul className="text-left mt-4">
-          {
-            Object.keys(report).map((k) => (
-              <li className="text-lg">
-                <div className="flex justify-between">{report[k]} {k}</div>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+      <h1 className="text-4xl text-center">Recursos Educativos Abiertos</h1>
+      <h2 className="mt-12 text-2xl">Tenés a tu disposición: </h2>
+      <ul className="text-left mt-4">
+        {
+          Object.keys(report).map((k) => (
+            <li className="text-lg">
+              <div className="flex justify-between">{report[k]} {k}</div>
+            </li>
+          ))
+        }
+      </ul>
     </Wrapper.Main>
   );
 };

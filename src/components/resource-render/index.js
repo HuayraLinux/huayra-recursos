@@ -3,9 +3,7 @@ import * as Viewers from './components';
 
 const ipc = window.require('electron').ipcRenderer;
 
-const Img = ({ file }) => (
-  <img src={file} />
-);
+const Img = ({ file }) => <img src={file} />
 
 const ResourceNotSupported = ({ file, type }) => (
   <div className="flex flex-col items-center justify-center rounded">
@@ -38,6 +36,10 @@ export default ({ file, mimeType }) => {
 
     case 'application/pdf':
       component = <Viewers.PDF file={appendCustomProtocol(file)} />;
+      break;
+
+    case 'text/html':
+      component = <Viewers.HTML file={file} />;
       break;
 
     default:
