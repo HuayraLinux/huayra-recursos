@@ -32,6 +32,7 @@ const createWindow = () => {
   mainWindow.loadURL(startURL);
   mainWindow.setPosition(0, 0);
   mainWindow.setMenuBarVisibility(false);
+  mainWindow.setTitle('Recursos Educativos Abiertos');
   
   if (reactDevServer) {
     mainWindow.webContents.openDevTools();

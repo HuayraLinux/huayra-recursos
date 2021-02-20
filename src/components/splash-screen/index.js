@@ -54,8 +54,7 @@ export default () => {
   return (
     <Wrapper.Main>
       <div className="">
-        <h1 className="text-4xl text-center">Bienvenido a los recursos educativos</h1>
-        <h1 className="text-4xl text-center">de Educ.Ar en Huayra</h1>
+        <h1 className="text-4xl text-center">Recursos Educativos Abiertos</h1>
         <h2 className="mt-12 text-2xl">Tenés a tu disposición: </h2>
         <ul className="text-left mt-4">
           {
