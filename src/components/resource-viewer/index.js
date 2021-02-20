@@ -60,7 +60,7 @@ export default () => {
         showSplash ?
         <SplashScreen /> :
         <Wrapper.ResourcePlaceholder>
-          <div className="flex justify-between items-baseline">
+          <div className="flex justify-between items-center">
             <h1 className="text-2xl truncate">{ resourceTitle }</h1>
             <div className="flex">
               {

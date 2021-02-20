@@ -15,14 +15,6 @@ export default () => {
     setResourcesToExplore(resources);
   }, [resources]);
 
-  if (!resourcesToExplore.length) {
-    return (
-      <div className="border-2 bg-white flex flex-col items-center justify-center rounded text-center px-4">
-        <h1 className="text-2xl">Buscá algo o elegí una categoría acá van a aparecer recursos</h1>
-      </div>
-    );
-  }
-
   return (
     <Wrapper.Main>
       {
@@ -36,7 +28,9 @@ export default () => {
             { c.titulo }
           </Wrapper.Item>
         )):
-        null
+        <div className="h-full flex flex-col items-center justify-center p-4">
+          <h1 className="text-2xl text-center">Buscá algo o elegí una categoría acá van a aparecer recursos</h1>
+        </div>
       }
     </Wrapper.Main>
   );

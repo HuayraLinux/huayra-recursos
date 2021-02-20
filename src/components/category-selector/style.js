@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Main = styled.div.attrs((props) => ({
-  className: `border-2 rounded ${props.disabled && 'opacity-40'}`
+  className: `bg-white border-2 border-black ${props.disabled && 'opacity-80'}`
 }))``;
 
 const Select = styled.select.attrs((props) => ({

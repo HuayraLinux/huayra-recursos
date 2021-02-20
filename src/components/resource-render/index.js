@@ -6,7 +6,7 @@ const ipc = window.require('electron').ipcRenderer;
 const Img = ({ file }) => <img src={file} />
 
 const ResourceNotSupported = ({ file, type }) => (
-  <div className="flex flex-col items-center justify-center rounded">
+  <div className="flex flex-col items-center justify-center">
     <EmojiButton name="Warning" 
       title="Archivo no encontrado"
       size="64px"
