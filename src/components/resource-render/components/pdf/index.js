@@ -44,12 +44,35 @@ export default ({ file }) => {
         <div className="col-span-2 text-center italic">{ currentPage } / { numPages }</div>
       }
       <div className="col-span-2 mt-4">
-        <div className="h-screen flex justify-center">
+        <div className="h-screen flex flex-col items-center">
+
           <Document key={file} file={file} onLoadSuccess={onPDFLoad}>
             { loaded && <Page pageNumber={currentPage} /> }
           </Document>
+{
+        numPages &&
+        <div className="col-span-2 text-center italic">{ currentPage } / { numPages }</div>
+      }
+
+          <div className="flex">
+            <div className="mr-12">
+              <EmojiButton name="ArrowLeft"
+                onClick={() => setCurrentPage(currentPage - 1)}
+                disabled={currentPage - 1 === 0}
+                title="Página previa"
+              />
+            </div>
+            <div className="ml-12">
+              <EmojiButton name="ArrowRight"
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={currentPage + 1 > numPages}
+                title="Página siguiente"
+              />
+            </div>
+          </div>
         </div>
       </div>
+
     </Wrapper.Main>
   );
 };
