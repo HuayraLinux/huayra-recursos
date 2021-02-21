@@ -49,11 +49,10 @@ export default ({ file }) => {
           <Document key={file} file={file} onLoadSuccess={onPDFLoad}>
             { loaded && <Page pageNumber={currentPage} /> }
           </Document>
-{
-        numPages &&
-        <div className="col-span-2 text-center italic">{ currentPage } / { numPages }</div>
-      }
-
+          {
+            numPages &&
+            <div className="col-span-2 text-center italic">{ currentPage } / { numPages }</div>
+          }
           <div className="flex">
             <div className="mr-12">
               <EmojiButton name="ArrowLeft"

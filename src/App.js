@@ -15,8 +15,11 @@ const App = () => (
     <MainLayout>
       <Provider>
         <SearchBar />
-        <CategorySelector />
         <ResourceViewer />
+      <div className="text-center text-lg">
+        o también podés
+      </div>
+        <CategorySelector />
         <ResourceExplorer />
       </Provider>
     </MainLayout>

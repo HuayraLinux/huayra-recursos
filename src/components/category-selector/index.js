@@ -59,7 +59,7 @@ export default () => {
       <Wrapper.Select onChange={onCategoryClicked} disabled={isSearching}>
         {
           (isSearching || !resources.length) &&
-          <option selected={true} disabled={true}>Elegí una materia</option>
+          <option selected={true} disabled={true}>Elegir una categoría</option>
         }
         {
           formattedData.map((e, i) => (

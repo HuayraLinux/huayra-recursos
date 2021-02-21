@@ -4,3 +4,7 @@ export { default as Warning } from './warning.svg';
 export { default as ArrowLeft } from './arrow-left.svg';
 export { default as ArrowRight } from './arrow-right.svg';
 export { default as ThinkingFace } from './thinking-face.svg';
+export { default as GrimacingFace } from './grimacing-face.svg';
+export { default as MagnifyingGlass } from './magnifying-glass.svg';
+export { default as Videos } from './videos.svg';
+export { default as Documents } from './documents.svg';
