@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { pdfjs, Document, Page } from 'react-pdf';
 
@@ -11,6 +11,7 @@ export default ({ file }) => {
   const [numPages, setNumPages] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [loaded, setLoadad] = useState(false);
+  const viewerEl = useRef(null);
 
   const onPDFLoad = ({ numPages }) => {
     setNumPages(numPages);
@@ -23,8 +24,13 @@ export default ({ file }) => {
     setNumPages(null);
   }, [file]);
 
+  useEffect(() => {
+    if (!viewerEl) return;
+    viewerEl.current.scrollIntoView({ behavior: 'smooth' });
+  }, [currentPage]);
+
   return (
-    <Wrapper.Main key={file}>
+    <Wrapper.Main key={file} ref={viewerEl}>
       <div className="justify-self-end mr-12">
         <EmojiButton name="ArrowLeft"
           onClick={() => setCurrentPage(currentPage - 1)}
