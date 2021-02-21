@@ -12,3 +12,5 @@ export { default as FearScreamingFace } from './fear-screaming-face.svg';
 export { default as Picture } from './picture.svg';
 export { default as Microphone } from './microphone.svg';
 export { default as Goggles } from './goggles.svg';
+export { default as DizzyFace } from './dizzy-face.svg';
+export { default as CounterClockwiseArrows } from './counter-clockwise-arrows.svg';

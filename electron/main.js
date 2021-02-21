@@ -40,6 +40,19 @@ const createWindow = () => {
     Menu.setApplicationMenu(Menu.buildFromTemplate([]));
   }
 
+  ipcMain.on('load-index', () => {
+    let response = {};
+
+    try {
+      const indexContents = fs.readFileSync(`${config.baseDir}/indice.json`);
+      response.resources = JSON.parse(indexContents);
+    } catch (e) {
+      response.error = true;
+    } finally {
+      mainWindow.webContents.send('load-index-result', response);
+    }
+  });
+
   ipcMain.on('build-filename', (e, file) => {
     const filePath = `${config.baseDir}/${file}`;
     const response = { filePath };
