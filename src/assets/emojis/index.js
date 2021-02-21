@@ -8,3 +8,7 @@ export { default as GrimacingFace } from './grimacing-face.svg';
 export { default as MagnifyingGlass } from './magnifying-glass.svg';
 export { default as Videos } from './videos.svg';
 export { default as Documents } from './documents.svg';
+export { default as FearScreamingFace } from './fear-screaming-face.svg';
+export { default as Picture } from './picture.svg';
+export { default as Microphone } from './microphone.svg';
+export { default as Goggles } from './goggles.svg';

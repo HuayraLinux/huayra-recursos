@@ -82,11 +82,11 @@ export default () => {
           {
             resourceNotFound ?
             <div className="flex flex-col items-center justify-center rounded">
-              <EmojiButton name="Warning" 
-                title="Archivo no encontrado"
-                size="64px"
+              <EmojiButton name="FearScreamingFace" 
+                title="Recurso no encontrado"
+                size="128px"
               />
-              <h1 className="text-2xl font-bold">Archivo no encontrado</h1>
+              <h1 className="text-2xl font-bold">Recurso no encontrado</h1>
               <h2
                 className="mt-9 underline cursor-pointer text-sm"
                 onClick={() => ipc.send('open-resource-folder')}
