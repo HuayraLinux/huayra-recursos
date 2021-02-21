@@ -1,8 +1,4 @@
-import {
-  useContext,
-  useState,
-  useEffect
-} from 'react';
+import { useContext } from 'react';
 
 import { Context } from 'provider';
 
@@ -12,7 +8,6 @@ export default () => {
   const {
     allResources,
     setResources,
-    setResourceId,
     setIsSearching,
   } = useContext(Context);
 

@@ -50,8 +50,8 @@ const analyze = (resources) => {
     const humanType = getHumanFileType(mimeType);
     if (!humanType) return acc;
  
-    if (!acc[humanType]) acc[humanType] = 0;
-    acc[humanType] = acc[humanType] + 1;
+    if (!acc[humanType]) acc[humanType] = { resources: [] };
+    acc[humanType].resources.push(r);
 
     return acc
   }, {});
@@ -60,7 +60,7 @@ const analyze = (resources) => {
 };
 
 export default () => {
-  const { allResources } = useContext(Context);
+  const { allResources, setResources } = useContext(Context);
 
   const report = useMemo(
     () => analyze(allResources)
@@ -74,8 +74,13 @@ export default () => {
         {
           Object.keys(report).map((k) => (
             <li className="text-2xl px-8 flex flex-col items-center">
-              <EmojiButton name={emojis[k]} title="Ups" size="128px" />
-              <h3 className="font-bold">{report[k]}</h3>
+              <EmojiButton
+                onClick={() => setResources(report[k].resources)}
+                name={emojis[k]}
+                title={`Ver ${k}`}
+                size="128px"
+              />
+              <h3 className="font-bold">{report[k].resources.length}</h3>
               <h4>{k}</h4>
             </li>
           ))
