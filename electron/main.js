@@ -11,7 +11,28 @@ const {
   globalShortcut,
 } = require('electron');
 
-const config = require('./config');
+
+const defaults = {
+  CARPETA_RECURSOS: '/media/recursos',
+  ANCHO: 1366,
+  ALTO: 655,
+};
+
+const homeConfigPath = `${process.env.HOME}/.recursos-educativos-abiertos.json`;
+let config = {};
+try {
+  const homeConfig = fs.readFileSync(homeConfigPath, 'utf8');
+  config = { ...JSON.parse(homeConfig) };
+} catch (e) {
+  console.log(`No se encontró configuración en ${homeConfigPath}, aplicando configuración por defecto:`);
+  console.log(defaults);
+} finally {
+  config = {
+    baseDir: process.env.CARPETA_RECURSOS || config.CARPETA_RECURSOS || defaults.CARPETA_RECURSOS,
+    width: process.env.ANCHO || config.ANCHO || defaults.ANCHO,
+    height: process.env.ALTO || config.ALTO || defaults.ALTO,
+  };
+}
 
 const reactDevServer = process.env.REACT_DEV_SERVER;
 
@@ -19,8 +40,8 @@ const createWindow = () => {
   let mainWindow = new BrowserWindow({
     width: config.width,
     height: config.height,
-    minWidth: config.width,
-    minHeight: config.height,
+    minWidth: defaults.ANCHO,
+    minHeight: defaults.ALTO,
     webPreferences: {
       nodeIntegration: true,
       devTools: reactDevServer && true,
@@ -41,12 +62,22 @@ const createWindow = () => {
   }
 
   ipcMain.on('load-index', () => {
-    let response = {};
+    const indexPath = `${config.baseDir}/indice.json`;
 
+    let response = {};
     try {
-      const indexContents = fs.readFileSync(`${config.baseDir}/indice.json`);
+      const indexContents = fs.readFileSync(indexPath);
       response.resources = JSON.parse(indexContents);
     } catch (e) {
+      if (e instanceof SyntaxError) {
+        console.log(`[ERROR]: ${indexPath} no parece ser un archivo JSON válido`);
+      } else if (e.code === 'ENOENT') {
+        console.log(`[ERROR]: ${indexPath} no no encontrado`);
+      } else {
+        console.log(`[ERROR]: Problema desconocido con indice ${indexPath}`);
+        console.log(e)
+      }
+
       response.error = true;
     } finally {
       mainWindow.webContents.send('load-index-result', response);
