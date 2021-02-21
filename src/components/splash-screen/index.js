@@ -48,11 +48,8 @@ const analyze = (resources) => {
   const report = resources.reduce((acc, r) => {
     const mimeType = mime.lookup(r.nombre_archivo)
     const humanType = getHumanFileType(mimeType);
-    if (!humanType) {
-    console.log(r, mimeType);
-      return acc;
-    }
-    
+    if (!humanType) return acc;
+ 
     if (!acc[humanType]) acc[humanType] = 0;
     acc[humanType] = acc[humanType] + 1;
 

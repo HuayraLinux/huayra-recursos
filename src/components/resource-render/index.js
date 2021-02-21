@@ -42,6 +42,10 @@ export default ({ file, mimeType }) => {
       component = <Viewers.HTML file={file} />;
       break;
 
+    case 'audio/mpeg':
+      component = <Viewers.Audio file={appendCustomProtocol(file)} />
+      break;
+
     default:
       console.log(`${file} (${mimeType}) no soportado`);
       component = <ResourceNotSupported file={file} type={mimeType && mimeType.split('/')[1]} />;
