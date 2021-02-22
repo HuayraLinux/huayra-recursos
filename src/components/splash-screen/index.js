@@ -2,7 +2,7 @@ import { useContext, useMemo } from 'react';
 import mime from 'mime-types';
 
 import { Context } from 'provider';
-import { EmojiButton } from 'components';
+import { EmojiButton, Vaca } from 'components';
 
 import Wrapper from './style';
 
@@ -68,8 +68,13 @@ export default () => {
 
   return (
     <Wrapper.Main>
-      <h1 className="text-6xl text-center">Recursos Educativos Abiertos</h1>
-      <h2 className="mt-8 text-4xl">Tenés a tu disposición: </h2>
+      <div className="w-full flex justify-center items-end" >
+        <Vaca name="Indica" width="200px" height="200px" />
+        <div style={{ marginBottom: '32px' }}>
+          <h1 className="text-5xl text-center">Recursos Educativos Abiertos</h1>
+          <h2 className="text-4xl">Tenés a tu disposición: </h2>
+        </div>
+      </div>
       <ul className="text-left mt-20 flex items-end">
         {
           Object.keys(report).map((k) => (

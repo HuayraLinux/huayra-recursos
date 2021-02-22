@@ -9,9 +9,10 @@ import mime from 'mime-types';
 
 import { Context } from 'provider';
 import {
+  Vaca,
   EmojiButton,
   ResourceRender,
-  SplashScreen
+  SplashScreen,
 } from 'components';
 
 import Wrapper from './style';
@@ -82,11 +83,8 @@ export default () => {
           {
             resourceNotFound ?
             <div className="flex flex-col items-center justify-center rounded">
-              <EmojiButton name="FearScreamingFace" 
-                title="Recurso no encontrado"
-                size="128px"
-              />
-              <h1 className="text-2xl font-bold">Recurso no encontrado</h1>
+              <Vaca name="Panico" size="2x" />
+              <h1 className="mt-8 text-2xl font-bold">Recurso no encontrado</h1>
               <h2
                 className="mt-9 underline cursor-pointer text-sm"
                 onClick={() => ipc.send('open-resource-folder')}
