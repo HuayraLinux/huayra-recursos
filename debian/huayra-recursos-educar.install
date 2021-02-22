@@ -1,0 +1,3 @@
+electron usr/share/huayra-recursos-educar
+build	usr/share/huayra-recursos-educar
+bin/huayra-recursos-educar	usr/bin/

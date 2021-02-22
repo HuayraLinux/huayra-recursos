@@ -1,0 +1,17 @@
+Source: huayra-recursos-educar
+Section: utils
+Priority: extra
+Maintainer: Sebastian Alvarez <seba.alvarez16@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), nodejs
+Standards-Version: 3.9.3
+#Homepage: http://github.com/HuayraLinux/huayra-curriculum
+#Vcs-Git: git://github.com/HuayraLinux/huayra-curriculum.git
+#Vcs-Browser: https://github.com/HuayraLinux/huayra-curriculum
+
+Package: huayra-recursos-educar
+Architecture: all
+Depends: electron,
+	${misc:Depends}
+Description: Facilita la creación de curriculums
+ Huayra-curriculum es un asistente que permite crear curriculums 
+ de manera sencilla, incluyendo ejemplos, consejos y buenas prácticas.
