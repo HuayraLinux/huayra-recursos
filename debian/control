@@ -12,5 +12,5 @@ Package: recursos-educativos-abiertos
 Architecture: all
 Depends: electron,
 	${misc:Depends}
-Description: Descripcion corta para recursos-educativos-abiertos
- Descripcion larga para recursos-educativos-abiertos
+Description: Recursos Educativos Abiertos curados por Educ.Ar S.E.
+ Recursos Educativos Abiertos curados por Educ.Ar S.E.
