@@ -21,11 +21,19 @@ ifeq ($(shell test -e $(HOME) || echo no),no)
 	export HOME=/tmp
 endif
 
-override_dh_auto_configure:
-	node -v
-	npm -v
-	npm i
-	npm run build
+# Node
+NODE_VERSION=v12.21.0
+NODE_FILENAME=node-$(NODE_VERSION)-linux-x64
+NODE_TARBALL=$(NODE_FILENAME).tar.xz
+
+PATH:=$(NODE_FILENAME)/bin:$(PATH)
 
 %:
 	dh $@
+
+override_dh_auto_configure:
+	wget https://nodejs.org/dist/$(NODE_VERSION)/$(NODE_TARBALL)
+	tar xvf $(NODE_TARBALL)
+	node -v; npm -v
+	npm i
+	npm run build
