@@ -1,0 +1,4 @@
+electron usr/share/huayra-recursos-educar
+build	usr/share/huayra-recursos-educar
+bin/recursos-educativos-abiertos usr/bin/
+debian/recursos-educativos-abiertos.desktop /usr/share/applications

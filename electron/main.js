@@ -29,7 +29,7 @@ try {
   console.log(`Se crea ${homeConfigPath} con configuración previamente utilizada`);
 
   fs.writeFileSync(homeConfigPath, JSON.stringify(defaults, null, 4));
-} finally {
+  } finally {
   config = {
     baseDir: process.env.CARPETA_RECURSOS || config.CARPETA_RECURSOS || defaults.CARPETA_RECURSOS,
     width: process.env.ANCHO || config.ANCHO || defaults.ANCHO,
