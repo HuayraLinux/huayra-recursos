@@ -5,6 +5,6 @@ Comment=Recursos Educativos Abiertos
 Exec=/usr/bin/recursos-educativos-abiertos
 Terminal=false
 Type=Application
+Categories=Graphics;Huayra;
 #Icon=huayra-avatar
-#Categories=Graphics;Huayra;
 #StartupWMClass=huayra-avatar
