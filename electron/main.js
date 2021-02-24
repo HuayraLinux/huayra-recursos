@@ -11,7 +11,6 @@ const {
   globalShortcut,
 } = require('electron');
 
-
 const defaults = {
   CARPETA_RECURSOS: '/media/recursos',
   ANCHO: 1366,
@@ -24,8 +23,12 @@ try {
   const homeConfig = fs.readFileSync(homeConfigPath, 'utf8');
   config = { ...JSON.parse(homeConfig) };
 } catch (e) {
-  console.log(`No se encontró configuración en ${homeConfigPath}, aplicando configuración por defecto:`);
+  console.log(`No se encontró configuración en ${homeConfigPath}`);
+  console.log('Aplicando configuración por defecto:');
   console.log(defaults);
+  console.log(`Se crea ${homeConfigPath} con configuración previamente utilizada`);
+
+  fs.writeFileSync(homeConfigPath, JSON.stringify(defaults, null, 4));
 } finally {
   config = {
     baseDir: process.env.CARPETA_RECURSOS || config.CARPETA_RECURSOS || defaults.CARPETA_RECURSOS,
