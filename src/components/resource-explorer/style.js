@@ -11,7 +11,7 @@ const Main = styled.ul.attrs({
 `;
 
 const Item = styled.li.attrs((props) => ({
-  className: `p-4 cursor-pointer truncate ${props.selected && 'font-bold'}`
+  className: `p-4 cursor-pointer truncate ${props.selected && 'font-bold underline'}`
 }))`
 `;
 
