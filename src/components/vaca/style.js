@@ -4,7 +4,7 @@ const Main = styled.img.attrs({
 })`
   ${props => props.width && `width: ${props.width};`}
   ${props => props.height && `width: ${props.height};`}
-  ${props => `transform: scale(${props.size});`}
+  transform: ${props => props.mirror ? `scale(-${props.size}, ${props.size})` : `scale(${props.size})`}
 `;
 
 export default ({

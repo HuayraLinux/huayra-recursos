@@ -3,8 +3,9 @@ import { useState, useEffect, useRef } from 'react';
 import { pdfjs, Document, Page } from 'react-pdf';
 
 import { EmojiButton } from 'components';
-import Wrapper from './style';
+import { ArrowLeft, ArrowRight } from 'assets/emojis';
 
+import Wrapper from './style';
 pdfjs.GlobalWorkerOptions.workerSrc = './pdf.worker.min.js'
 
 export default ({ file }) => {
@@ -32,14 +33,14 @@ export default ({ file }) => {
   return (
     <Wrapper.Main key={file} ref={viewerEl}>
       <div className="justify-self-end mr-12">
-        <EmojiButton name="ArrowLeft"
+        <EmojiButton src={ArrowLeft}
           onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage - 1 === 0}
           title="Página previa"
         />
       </div>
       <div className="justify-self-start ml-12">
-        <EmojiButton name="ArrowRight"
+        <EmojiButton src={ArrowRight}
           onClick={() => setCurrentPage(currentPage + 1)}
           disabled={currentPage + 1 > numPages}
           title="Página siguiente"
@@ -61,14 +62,14 @@ export default ({ file }) => {
           }
           <div className="flex">
             <div className="mr-12">
-              <EmojiButton name="ArrowLeft"
+              <EmojiButton src={ArrowLeft}
                 onClick={() => setCurrentPage(currentPage - 1)}
                 disabled={currentPage - 1 === 0}
                 title="Página previa"
               />
             </div>
             <div className="ml-12">
-              <EmojiButton name="ArrowRight"
+              <EmojiButton src={ArrowRight}
                 onClick={() => setCurrentPage(currentPage + 1)}
                 disabled={currentPage + 1 > numPages}
                 title="Página siguiente"

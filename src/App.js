@@ -20,7 +20,7 @@ const AppDispatcher = () => {
     <>
       <SearchBar />
       <ResourceViewer />
-      <div className="text-center text-lg">o también podés</div>
+      <div className="text-white text-center text-lg">o también podés</div>
       <CategorySelector />
       <ResourceExplorer />
     </>

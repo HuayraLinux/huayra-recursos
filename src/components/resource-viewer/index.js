@@ -14,6 +14,8 @@ import {
   ResourceRender,
   SplashScreen,
 } from 'components';
+import { FileFolder } from 'assets/jm';
+import { Memo } from 'assets/emojis';
 
 import Wrapper from './style';
 
@@ -67,11 +69,11 @@ export default () => {
               {
                 !resourceNotFound &&
                 <>
-                  <EmojiButton name="FileFolder" 
+                  <EmojiButton src={FileFolder}
                     title="Abrir en carpeta"
                     onClick={() => ipc.send('open-in-folder', resourceFile)}
                   />
-                  <EmojiButton name="Memo" 
+                  <EmojiButton src={Memo}
                     title="Abrir recurso"
                     onClick={() => ipc.send('open-file', resourceFile)}
                   />

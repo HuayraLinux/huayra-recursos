@@ -5,7 +5,8 @@ import {
 } from 'react';
 
 import { Context } from 'provider';
-import { EmojiButton } from 'components';
+import { Vaca, EmojiButton } from 'components';
+import { MagnifyingGlass} from 'assets/emojis';
 
 import Wrapper from './style';
 
@@ -40,13 +41,13 @@ export default () => {
           {
             isSearching ?
             <div className="flex flex-col items-center">
-              <EmojiButton name="GrimacingFace" title="Ups" size="128px" />
+              <Vaca name="Panico" size="1.5x" />
               <h1 className="text-2xl text-center">
                 No se encontraron recursos, probá con otra búsqueda.
               </h1>
             </div> :
             <div className="flex flex-col items-center">
-              <EmojiButton name="MagnifyingGlass" title="Buscá" size="128px" />
+              <EmojiButton src={MagnifyingGlass} title="Buscá" size="128px" />
               <h1 className="text-2xl text-center">
                 Y acá van a aparecer los resultados
               </h1>

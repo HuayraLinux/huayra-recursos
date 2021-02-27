@@ -1,9 +1,7 @@
 import Wrapper from './style';
 import * as Emojis from 'assets/emojis';
 
-export default ({ name, title, onClick, style, animate, disabled = false, size = '48px' }) => {
-  const EmojiSVGSrc = Emojis[name];
-
+export default ({ name, title, onClick, style, animate, disabled = false, size = '48px', src }) => {
   return (
     <Wrapper.Main
       onClick={disabled ? null : onClick}
@@ -13,7 +11,12 @@ export default ({ name, title, onClick, style, animate, disabled = false, size =
       title={title}
       animate={animate}
     >
-      <img height={size} width={size} className={`${disabled && 'opacity-25'}`} src={EmojiSVGSrc} />
+      <Wrapper.Img
+        src={src}
+        width={size}
+        height={size}
+        disabled={disabled}
+      />
     </Wrapper.Main>
   );
 };

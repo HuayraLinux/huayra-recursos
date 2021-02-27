@@ -1,14 +1,10 @@
 import Wrapper from './style';
-import { EmojiButton } from 'components';
+import { Vaca } from 'components';
 
 const ipc = window.require('electron').ipcRenderer;
 
 export default ({ file }) => (
   <Wrapper.Main>
-    <EmojiButton name="ThinkingFace" 
-      title="Herramienta sugerida"
-      size="128px"
-    />
     <h1 className="text-2xl font-bold text-center">
       Este recurso se ve mejor si usás<br />
       <span
@@ -19,5 +15,8 @@ export default ({ file }) => (
       </span>{' '}
       de Huayra
     </h1>
+    <div className="mt-8">
+      <Vaca name="Indica" size="1.5x" mirror />
+    </div>
   </Wrapper.Main>
 );

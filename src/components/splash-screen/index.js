@@ -3,15 +3,16 @@ import mime from 'mime-types';
 
 import { Context } from 'provider';
 import { EmojiButton, Vaca } from 'components';
+import * as JM from 'assets/jm';
 
 import Wrapper from './style';
 
-const emojis = {
-  Videos: 'Videos',
-  Documentos: 'Documents',
-  Imágenes: 'Picture',
-  Experiencias: 'Goggles',
-  Audios: 'Microphone',
+const icons = {
+  Videos: JM.Videos,
+  Documentos: JM.Documents,
+  Imágenes: JM.Camera,
+  Experiencias: JM.Netbook,
+  Audios: JM.Audio,
 };
 
 const fileTypes = [
@@ -81,9 +82,9 @@ export default () => {
             <li className="text-2xl px-8 flex flex-col items-center">
               <EmojiButton
                 onClick={() => setResources(report[k].resources)}
-                name={emojis[k]}
+                src={icons[k]}
                 title={`Ver ${k}`}
-                size="128px"
+                size="96px"
               />
               <h3 className="font-bold">{report[k].resources.length}</h3>
               <h4>{k}</h4>

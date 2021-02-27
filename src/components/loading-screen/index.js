@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { Context } from 'provider';
 
 import { Vaca, EmojiButton } from 'components';
+import { CounterClockwiseArrows } from 'assets/emojis';
 
 import Wrapper from './style';
 
@@ -20,7 +21,7 @@ export default () => {
         <>
           <Vaca name="Heroina" size="2x" />
           <h1 className="text-6xl text-center mt-20">Recursos Educativos Abiertos</h1>
-          <EmojiButton name="CounterClockwiseArrows" title="Cargando..." size="100px" animate="pulse" />
+          <EmojiButton src={CounterClockwiseArrows} title="Cargando..." size="100px" animate="pulse" />
           <h2 className="mt-4 text-4xl">Estamos preparando todo...</h2>
         </>
       }
