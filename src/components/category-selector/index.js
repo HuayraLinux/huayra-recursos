@@ -28,6 +28,7 @@ export default () => {
     resources,
   } = useContext(Context);
 
+  const [categorySelected, setCategorySelected] = useState(false);
   const [formattedData, setFormattedData] = useState([]);
 
   const onCategoryClicked = ({ target }) => {
@@ -46,6 +47,7 @@ export default () => {
     }, []);
 
     setResources(resources);
+    setCategorySelected(true);
   };
 
   useEffect(() => {
@@ -58,7 +60,7 @@ export default () => {
     <Wrapper.Main disabled={isSearching}>
       <Wrapper.Select onChange={onCategoryClicked} disabled={isSearching}>
         {
-          (isSearching || !resources.length) &&
+          (isSearching || !resources.length || !categorySelected) &&
           <option selected={true} disabled={true}>Elegir una categoría</option>
         }
         {
