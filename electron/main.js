@@ -13,10 +13,6 @@ const {
 const buildError = require('./error');
 
 const checkIntegrity = (resources, fileName) => {
-  if (!resources.length) {
-    throw buildError('NO_RESOURCES', `No se encontraron recursos en ${fileName}`);
-  }
-
   const updatedResources = resources.reduce((acc, r, i) => {
     if (
       !r.ciclo ||
@@ -28,6 +24,10 @@ const checkIntegrity = (resources, fileName) => {
 
     return acc.concat({id: i + 1, ...r});
   }, []);
+
+  if (!updatedResources.length) {
+    throw buildError('NO_RESOURCES', `No se encontraron recursos en ${fileName}`);
+  }
 
   return updatedResources;
 };
