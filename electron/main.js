@@ -38,7 +38,7 @@ const defaults = {
   ALTO: 655,
 };
 
-const homeConfigPath = `${process.env.HOME}/.recursos-educativos-abiertos.json`;
+const homeConfigPath = `${process.env.HOME}/.huayra-recursos-educativos-abiertos.json`;
 let config = {};
 try {
   const homeConfig = fs.readFileSync(homeConfigPath, 'utf8');

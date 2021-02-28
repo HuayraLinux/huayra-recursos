@@ -1,4 +1,4 @@
-Source: recursos-educativos-abiertos
+Source: huayra-recursos-educativos-abiertos
 Section: utils
 Priority: extra
 Maintainer: Sebastian Alvarez <seba.alvarez16@gmail.com>
@@ -8,7 +8,7 @@ Homepage: http://github.com/HuayraLinux/huayra-recursos
 Vcs-Git: git://github.com/HuayraLinux/huayra-recursos.git
 Vcs-Browser: https://github.com/HuayraLinux/huayra-recursos
 
-Package: recursos-educativos-abiertos
+Package: huayra-recursos-educativos-abiertos
 Architecture: all
 Depends: electron,
 	${misc:Depends}

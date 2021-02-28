@@ -1,4 +1,0 @@
-electron usr/share/recursos-educativos-abiertos
-build	usr/share/recursos-educativos-abiertos
-bin/recursos-educativos-abiertos usr/bin/
-debian/recursos-educativos-abiertos.desktop /usr/share/applications

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-electron /usr/share/recursos-educativos-abiertos/electron/main.js
