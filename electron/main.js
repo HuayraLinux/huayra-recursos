@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-
 const {
   app,
   BrowserWindow,
@@ -10,6 +9,28 @@ const {
   Menu,
   globalShortcut,
 } = require('electron');
+
+const buildError = require('./error');
+
+const checkIntegrity = (resources, fileName) => {
+  if (!resources.length) {
+    throw buildError('NO_RESOURCES', `No se encontraron recursos en ${fileName}`);
+  }
+
+  const updatedResources = resources.reduce((acc, r, i) => {
+    if (
+      !r.ciclo ||
+      !r.categoria ||
+      !r.titulo ||
+      !r.descripcion ||
+      !r.descripcion
+    ) return acc;
+
+    return acc.concat({id: i + 1, ...r});
+  }, []);
+
+  return updatedResources;
+};
 
 const defaults = {
   CARPETA_RECURSOS: '/media/recursos',
@@ -29,7 +50,7 @@ try {
   console.log(`Se crea ${homeConfigPath} con configuración previamente utilizada`);
 
   fs.writeFileSync(homeConfigPath, JSON.stringify(defaults, null, 4));
-  } finally {
+} finally {
   config = {
     baseDir: process.env.CARPETA_RECURSOS || config.CARPETA_RECURSOS || defaults.CARPETA_RECURSOS,
     width: process.env.ANCHO || config.ANCHO || defaults.ANCHO,
@@ -70,12 +91,14 @@ const createWindow = () => {
     let response = {};
     try {
       const indexContents = fs.readFileSync(indexPath);
-      response.resources = JSON.parse(indexContents);
+      response.resources = checkIntegrity(JSON.parse(indexContents), indexPath);
     } catch (e) {
       if (e instanceof SyntaxError) {
         console.log(`[ERROR]: ${indexPath} no parece ser un archivo JSON válido`);
       } else if (e.code === 'ENOENT') {
         console.log(`[ERROR]: ${indexPath} no no encontrado`);
+      } else if (e.name === 'NO_RESOURCES') {
+        console.log(`[ERROR]: ${e.message}`);
       } else {
         console.log(`[ERROR]: Problema desconocido con indice ${indexPath}`);
         console.log(e)
