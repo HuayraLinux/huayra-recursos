@@ -15,7 +15,7 @@ export default ({ children }) => {
   const [resourceId, setResourceId] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
   const [appReady, setAppAsReady] = useState(false);
-  const [appFailed, setAppFailed] = useState(false);
+  const [appFailed, setAppFailed] = useState(null);
 
   const providerValue = {
     resources,
@@ -39,7 +39,7 @@ export default ({ children }) => {
 
     ipc.on('load-index-result', (e, result) => {
       if (result.error) {
-        setAppFailed(true);
+        setAppFailed(result.error);
         return;
       }
 

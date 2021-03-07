@@ -6,6 +6,11 @@ const Main = styled.div.attrs({
   box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px var(--shadow-color);
 `;
 
+const ErrorDetails = styled.details.attrs({
+  className: 'flex w-full mt-8'
+})``;
+
 export default ({
   Main,
+  ErrorDetails,
 });

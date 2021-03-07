@@ -93,18 +93,19 @@ const createWindow = () => {
       const indexContents = fs.readFileSync(indexPath);
       response.resources = checkIntegrity(JSON.parse(indexContents), indexPath);
     } catch (e) {
+
       if (e instanceof SyntaxError) {
-        console.log(`[ERROR]: ${indexPath} no parece ser un archivo JSON válido`);
+        response.error = `[ERROR]: ${indexPath} no parece ser un archivo JSON válido`;
       } else if (e.code === 'ENOENT') {
-        console.log(`[ERROR]: ${indexPath} no no encontrado`);
+        response.error = `[ERROR]: ${indexPath} no encontrado`;
       } else if (e.name === 'NO_RESOURCES') {
-        console.log(`[ERROR]: ${e.message}`);
+        response.error = `[ERROR]: ${e.message}`;
       } else {
-        console.log(`[ERROR]: Problema desconocido con indice ${indexPath}`);
+        response.error = `[ERROR]: Problema desconocido con indice ${indexPath}`;
         console.log(e)
       }
 
-      response.error = true;
+      console.log(response.error)
     } finally {
       mainWindow.webContents.send('load-index-result', response);
     }

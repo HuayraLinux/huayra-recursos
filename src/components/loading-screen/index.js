@@ -17,6 +17,10 @@ export default () => {
         <>
           <Vaca name="OhNo" size="2x" />
           <h2 className="mt-8 text-4xl">¡Oh, no... encontramos un problema!</h2>
+          <Wrapper.ErrorDetails>
+            <summary>Mostrar error</summary>
+            <p>{ appFailed }</p>
+          </Wrapper.ErrorDetails>
         </>:
         <>
           <Vaca name="Heroina" size="2x" />
