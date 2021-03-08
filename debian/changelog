@@ -1,3 +1,9 @@
+huayra-recursos-educativos-abiertos (1.0.1) unstable; urgency=low
+
+  * Splash inicial con errores para ayuda de soporte
+
+ -- Sebastian Alvarez <seba.alvarez16@gmail.com>  Sun, 07 Mar 2021 18:53:35 -0300
+
 huayra-recursos-educativos-abiertos (1.0.0) unstable; urgency=low
 
   * Versión inicial
