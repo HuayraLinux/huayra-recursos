@@ -1,3 +1,10 @@
+huayra-recursos-educativos-abiertos (1.0.2) unstable; urgency=low
+
+  * Nueva ruta por defecto para recursos
+  * Nuevas imagenes de Juana Manso
+
+ -- Sebastian Alvarez <seba.alvarez16@gmail.com>  Wed, 17 Mar 2021 19:59:43 -0300
+
 huayra-recursos-educativos-abiertos (1.0.1) unstable; urgency=low
 
   * Splash inicial con errores para ayuda de soporte
