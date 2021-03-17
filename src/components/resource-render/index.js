@@ -1,4 +1,4 @@
-import { Vaca } from 'components';
+import { Juana } from 'components';
 import * as Viewers from './components';
 
 const ipc = window.require('electron').ipcRenderer;
@@ -7,7 +7,7 @@ const Img = ({ file }) => <img src={file} />
 
 const ResourceNotSupported = ({ file, type }) => (
   <div className="flex flex-col items-center justify-center">
-    <Vaca name="Panico" size="2x" />
+    <Juana name="Panico" size="2x" />
     <h1 className="text-2xl font-bold">Formato <span className="underline">{type}</span> no soportado</h1>
     <h2
       className="mt-9 underline cursor-pointer text-sm"

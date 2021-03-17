@@ -33,7 +33,7 @@ const checkIntegrity = (resources, fileName) => {
 };
 
 const defaults = {
-  CARPETA_RECURSOS: '/media/recursos',
+  CARPETA_RECURSOS: '/home/recursos',
   ANCHO: 1366,
   ALTO: 655,
 };

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { Context } from 'provider';
 
-import { Vaca, EmojiButton } from 'components';
+import { Vaca, Juana, EmojiButton } from 'components';
 import { CounterClockwiseArrows } from 'assets/emojis';
 
 import Wrapper from './style';
@@ -15,7 +15,7 @@ export default () => {
       {
         appFailed ?
         <>
-          <Vaca name="OhNo" size="2x" />
+          <Juana name="OhNo" size="2x" />
           <h2 className="mt-8 text-4xl">¡Oh, no... encontramos un problema!</h2>
           <Wrapper.ErrorDetails>
             <summary>Mostrar error</summary>

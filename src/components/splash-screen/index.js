@@ -2,7 +2,7 @@ import { useContext, useMemo } from 'react';
 import mime from 'mime-types';
 
 import { Context } from 'provider';
-import { EmojiButton, Vaca } from 'components';
+import { EmojiButton, Juana } from 'components';
 import * as JM from 'assets/jm';
 
 import Wrapper from './style';
@@ -70,7 +70,7 @@ export default () => {
   return (
     <Wrapper.Main>
       <div className="w-full flex justify-center items-end" >
-        <Vaca name="Indica" width="200px" height="200px" />
+        <Juana name="Indica" width="200px" height="200px" />
         <div style={{ marginBottom: '32px' }}>
           <h1 className="text-5xl text-center">Recursos Educativos Abiertos</h1>
           <h2 className="text-4xl">Tenés a tu disposición: </h2>

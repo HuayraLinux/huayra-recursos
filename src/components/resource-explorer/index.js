@@ -5,7 +5,7 @@ import {
 } from 'react';
 
 import { Context } from 'provider';
-import { Vaca, EmojiButton } from 'components';
+import { Juana, EmojiButton } from 'components';
 import { MagnifyingGlass} from 'assets/emojis';
 
 import Wrapper from './style';
@@ -41,7 +41,7 @@ export default () => {
           {
             isSearching ?
             <div className="flex flex-col items-center">
-              <Vaca name="Panico" size="1.5x" />
+              <Juana name="Panico" size="1.5x" />
               <h1 className="text-2xl text-center">
                 No se encontraron recursos, probá con otra búsqueda.
               </h1>
