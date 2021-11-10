@@ -1,3 +1,9 @@
+huayra-recursos-educativos-abiertos (1.0.3) unstable; urgency=medium
+
+  * Vuelven iconos neutros.
+
+ -- Matias De lellis <mati86dl@gmail.com>  Tue, 09 Nov 2021 13:24:27 -0300
+
 huayra-recursos-educativos-abiertos (1.0.2) unstable; urgency=low
 
   * Nueva ruta por defecto para recursos
