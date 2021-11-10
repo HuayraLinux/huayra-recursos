@@ -8,4 +8,3 @@ export { default as SearchBar } from './search-bar';
 export { default as EmojiButton } from './emoji-button';
 export { default as LoadingScreen } from './loading-screen';
 export { default as Vaca } from './vaca';
-export { default as Juana } from './juana';

@@ -9,7 +9,7 @@ import mime from 'mime-types';
 
 import { Context } from 'provider';
 import {
-  Juana,
+  Vaca,
   EmojiButton,
   ResourceRender,
   SplashScreen,
@@ -85,7 +85,7 @@ export default () => {
           {
             resourceNotFound ?
             <div className="flex flex-col items-center justify-center rounded">
-              <Juana name="Panico" size="2x" />
+              <Vaca name="Panico" size="2x" />
               <h1 className="mt-8 text-2xl font-bold">Recurso no encontrado</h1>
               <h2
                 className="mt-9 underline cursor-pointer text-sm"
